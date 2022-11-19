@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/599/599502.png" type="image/x-icon">
+    <title>Calculadora Temperatura e Espaço</title>
+    <style>
+
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        section{
+            border: solid;
+            height: 600px;
+            display: flex;
+            background-color: white;
+            border-radius: 20px;
+            max-width: 1000px;
+            width: 1000px;
+           
+        }
+
+        .conteiner_temperatura{
+            width: 50%;
+            border-right: solid;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .conteiner_Kilometragem{
+            width: 50%;
+            
+        }
+
+        .title{
+            text-align: center;
+
+        }
+       .seletor{
+            margin-left: 120px;
+            width: 180px;
+            display: flex;
+            gap: 20px;
+            height: 20px;
+            align-items: center;
+         }
+
+         
+       .conteiner_entradas{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            display: flex;
+            align-items: center;
+            margin-top: 100px;
+       }
+
+       .conteiner_entradas input{
+        width: 120px ;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+       }
+
+       textarea:focus, input:focus{
+        box-shadow: 0,0,0,0;
+        outline: none;
+       }
+
+      #button1{
+        width: 200px;
+        height: 50px;
+        border-radius: 20px;
+        cursor: pointer;
+        background-color: transparent;
+        transition: 0.5s;
+        border-color: rgba(0, 0, 0, 0.595);
+       }
+       #button1:hover{
+        width: 250px;
+        height: 55px;
+        font-size: 14px;
+        background-color: rgba(0, 0, 0, 0.932);
+        color: white;
+    }
+    textarea:focus, select:focus{
+        box-shadow: 0,0,0,0;
+        outline: none;
+       }
+    select{
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100px;
+    }
+    .resposta_temperatura{
+        width: 40%;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 150px;
+        margin-top: 80px;
+    } 
+    .conteiner_entrada_deValor{
+        margin-top: 98px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .conteiner_entrada_deValor input{
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    }
+    #button2{
+        width: 200px;
+        height: 50px;
+        cursor: pointer;
+        background-color: transparent;
+        position: relative;
+        display: inline-block;
+        border: 2px solid #111;
+        color: #111;
+        text-transform: uppercase;
+        font-weight: 600; 
+    }
+    #button2:before{
+        content: " ";
+        position:absolute;
+        top: 6px;
+        left: -2px;
+        width: calc(100% + 4px);
+        height: calc(100% - 12px);
+        background: #fff;
+        transition: 0.5s ease-in-out;
+        transform: scaleY(1);
+        transition-delay: 0.5s;
+    }
+    #button2:hover:before{
+        transform: scaleY(0);
+    }
+    #button2 span{
+        position: relative;
+        z-index: 3;
+    }
+    #button2:after{
+        content: " ";
+        position:absolute;
+        left: 6px;
+        top: -2px;
+        height: calc(100% + 4px);
+        width: calc(100% - 12px);
+        background: #fff;
+        transition: 0.5s ease-in-out;
+        transform: scaleX(1);
+    }
+    #button2:hover:after{
+        transform: scaleX(0);
+    }
+    .resposta_Km{
+        width: 40%;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 150px;
+        margin-top: 80px;
+    }
+   
+    </style>
+</head>
+<body>
+    
+
+    <main>
+        <section>
+            <div class="conteiner_temperatura">
+                <div class="title">
+                    <h1>Conversor de Temperatura ºC/ºF</h1>
+                </div>
+                
+                <div class="seletor">
+                    <select name="seletor" id="seletor1">
+                        <option  value ="Celsius">Celsius</option>
+                        <option value ="Fahrenheit">Fahrenheit</option>
+                    </select>
+
+                    <p>para</p>
+
+                    <select name="seletor" id="seletor2">
+                        <option  value ="Fahrenheit">Fahrenheit</option>
+                        <option value ="Celsius">Celsius</option>
+                    </select>
+                </div>
+
+                <div class="conteiner_entradas">
+                    <input type="text" id="input_temperatura" style="text-align:center;" placeholder="Digite aqui">
+                    <button id="button1">Calcular</button>
+                </div>
+
+                <div class="resposta_temperatura" id="conteiner_resposta">
+                        
+                </div>
+            </div>
+
+
+
+            <div class="conteiner_Kilometragem">
+                <div class="title">
+                    <h1>Conversor Quilometros para Milhas</h1>
+
+                    <div class="seletor">
+                            <select name="seletor2" id="seletor3">
+                                <option value="Km">Km</option>
+                                <option value="Milhas">Milhas</option>
+                            </select>
+                            <p>para</p>
+                            <select name="seletor4" id="seletor4">
+                                <option value="Milhas">Milhas</option>
+                                <option value="Km">Km</option>
+                            </select>
+                    </div>
+                    
+                    <div class="conteiner_entrada_deValor">
+                        <input type="text" id = "input_Km" style="text-align:center;" placeholder="Digite aqui">
+                        <button id="button2"> <span>Calcular</span></button>
+                    </div>
+
+                    <div class="resposta_Km" id="conteiner_respotaKm">
+                            
+                    </div>
+                </div>
+
+
+            </div>
+
+        </section>
+    </main>
+
+
+    
+
+
+    <script>
+
+        //calcular temepratura
+        document.getElementById("button1").addEventListener("click", function clicou(){
+           
+           var seletor_1          = document.getElementById("seletor1");
+           var seletor_2          = document.getElementById("seletor2");
+           var campo_entradaValor = document.getElementById("input_temperatura");
+           var campo_resposta     = document.getElementById("conteiner_resposta");
+ 
+            if(seletor_1.value == "Celsius" && seletor_2.value == "Fahrenheit"){
+                campo_resposta.innerHTML = `${(campo_entradaValor.value * 9/5) + 32} Fahrenheit` 
+                campo_entradaValor.style.borderColor = "black"
+            }
+            if(seletor_1.value == "Fahrenheit" && seletor_2.value == "Celsius"){
+                campo_resposta.innerHTML = ` ${( campo_entradaValor.value - 32) * 5/9} Celsius` 
+                campo_entradaValor.style.borderColor = "black"
+            }
+
+            if(seletor_1.value == "Celsius" && seletor_2.value == "Celsius"){
+                campo_resposta.innerHTML = "Medidas de temperaturas iguais, mude-as!"
+                campo_entradaValor.style.borderColor = "black"
+            }
+
+            if(seletor_1.value == "Fahrenheit" && seletor_2.value == "Fahrenheit"){
+                campo_resposta.innerHTML = "Medidas de temperaturas iguais, mude-as!"
+                campo_entradaValor.style.borderColor = "black"
+            }
+            
+            if(campo_entradaValor.value == 0){
+                campo_resposta.innerHTML = "Preencha o campo acima !"
+                campo_entradaValor.style.borderColor = "red"
+            }
+           
+        })
+
+
+        //calcular Kilometragem
+        document.getElementById("button2").addEventListener("click", function calcular(){
+            var seletorKm_3     = document.getElementById("seletor3");
+            var seletorKm_4     = document.getElementById("seletor4");
+            var input_entrada   = document.getElementById("input_Km");
+            var campo_resposta  = document.getElementById("conteiner_respotaKm");
+
+            if(seletorKm_3.value == "Km" && seletorKm_4.value == "Milhas"){
+                var calculo    = input_entrada.value/1.609;
+                var arendodado =  calculo.toFixed(2)
+                campo_resposta.innerHTML = arendodado + " Milhas"
+                input_entrada.style.borderColor = "black"
+            }
+            if(seletorKm_3.value == "Milhas" && seletorKm_4.value == "Km"){
+                var calculo    = input_entrada.value*1.609;
+                var arendodado =  calculo.toFixed(2)
+                campo_resposta.innerHTML = arendodado + " Km"
+                input_entrada.style.borderColor = "black"
+            }
+
+            if(seletorKm_3.value == "Km" && seletorKm_4.value == "Km"){
+                campo_resposta.innerText = " Medidas de espaço iguais !"
+                input_entrada.style.borderColor = "red"
+            }
+            if(seletorKm_3.value == "Milhas" && seletorKm_4.value == "Milhas"){
+                campo_resposta.innerText = " Medidas de espaço iguais !"
+                input_entrada.style.borderColor = "red"
+            }
+
+            if( input_entrada.value == 0){
+                campo_resposta.innerText = " Preencha o campo acima !"
+                input_entrada.style.borderColor = "red"                
+            }
+
+        })
+
+    </script>
+</body>
+</html>
