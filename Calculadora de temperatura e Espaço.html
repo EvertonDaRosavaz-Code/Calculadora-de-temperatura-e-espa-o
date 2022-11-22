@@ -177,8 +177,6 @@
     </style>
 </head>
 <body>
-    
-
     <main>
         <section>
             <div class="conteiner_temperatura">
@@ -210,8 +208,6 @@
                 </div>
             </div>
 
-
-
             <div class="conteiner_Kilometragem">
                 <div class="title">
                     <h1>Conversor Quilometros para Milhas</h1>
@@ -236,23 +232,14 @@
                     <div class="resposta_Km" id="conteiner_respotaKm">
                             
                     </div>
+
                 </div>
-
-
             </div>
-
         </section>
     </main>
-
-
-    
-
-
     <script>
-
         //calcular temepratura
-        document.getElementById("button1").addEventListener("click", function clicou(){
-           
+        document.getElementById("button1").addEventListener("click", function clicou(){  
            var seletor_1          = document.getElementById("seletor1");
            var seletor_2          = document.getElementById("seletor2");
            var campo_entradaValor = document.getElementById("input_temperatura");
@@ -266,24 +253,24 @@
                 campo_resposta.innerHTML = ` ${( campo_entradaValor.value - 32) * 5/9} Celsius` 
                 campo_entradaValor.style.borderColor = "black"
             }
-
             if(seletor_1.value == "Celsius" && seletor_2.value == "Celsius"){
                 campo_resposta.innerHTML = "Medidas de temperaturas iguais, mude-as!"
                 campo_entradaValor.style.borderColor = "black"
             }
-
             if(seletor_1.value == "Fahrenheit" && seletor_2.value == "Fahrenheit"){
                 campo_resposta.innerHTML = "Medidas de temperaturas iguais, mude-as!"
                 campo_entradaValor.style.borderColor = "black"
             }
-            
             if(campo_entradaValor.value == 0){
                 campo_resposta.innerHTML = "Preencha o campo acima !"
                 campo_entradaValor.style.borderColor = "red"
             }
-           
-        })
 
+            if(campo_entradaValor.value != 0){
+                campo_resposta.innerHTML = "Digite apenas números"
+                campo_entradaValor.style.borderColor = "red"   
+            }
+        })
 
         //calcular Kilometragem
         document.getElementById("button2").addEventListener("click", function calcular(){
@@ -294,31 +281,35 @@
 
             if(seletorKm_3.value == "Km" && seletorKm_4.value == "Milhas"){
                 var calculo    = input_entrada.value/1.609;
-                var arendodado =  calculo.toFixed(2)
-                campo_resposta.innerHTML = arendodado + " Milhas"
-                input_entrada.style.borderColor = "black"
+                var arendodado =  calculo.toFixed(2);
+                campo_resposta.innerHTML = arendodado + " Milhas";
+                input_entrada.style.borderColor = "black";
             }
             if(seletorKm_3.value == "Milhas" && seletorKm_4.value == "Km"){
                 var calculo    = input_entrada.value*1.609;
-                var arendodado =  calculo.toFixed(2)
-                campo_resposta.innerHTML = arendodado + " Km"
-                input_entrada.style.borderColor = "black"
+                var arendodado =  calculo.toFixed(2);
+                campo_resposta.innerHTML = arendodado + " Km";
+                input_entrada.style.borderColor = "black";
             }
 
             if(seletorKm_3.value == "Km" && seletorKm_4.value == "Km"){
-                campo_resposta.innerText = " Medidas de espaço iguais !"
-                input_entrada.style.borderColor = "red"
+                campo_resposta.innerText = " Medidas de espaço iguais !";
+                input_entrada.style.borderColor = "red";
             }
             if(seletorKm_3.value == "Milhas" && seletorKm_4.value == "Milhas"){
-                campo_resposta.innerText = " Medidas de espaço iguais !"
-                input_entrada.style.borderColor = "red"
+                campo_resposta.innerText = " Medidas de espaço iguais !";
+                input_entrada.style.borderColor = "red";
             }
 
             if( input_entrada.value == 0){
-                campo_resposta.innerText = " Preencha o campo acima !"
-                input_entrada.style.borderColor = "red"                
+                campo_resposta.innerText = " Preencha o campo acima !";
+                input_entrada.style.borderColor = "red" ;             
             }
-
+            
+            if(input_entrada.value != 0){
+                campo_resposta.innerText = "Digite apenas números !";
+                input_entrada.style.borderColor = "red" ;             
+            }
         })
 
     </script>
